@@ -26,4 +26,10 @@ noBtn.addEventListener("mouseover", () => {
 
   noBtn.style.left = x + "px";
   noBtn.style.top = y + "px";
-});
+});const music = document.getElementById("bgMusic");
+
+function showMessage() {
+  music.play();
+  alert("Сізді мерекеде күтеміз! 💐");
+  createHearts();
+}
