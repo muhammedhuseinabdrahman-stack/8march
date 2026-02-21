@@ -1,35 +1,34 @@
-function showMessage() {
-  alert("Сізді мерекеде күтеміз! 💐");
-  createHearts();
-}
+window.onload = function() {
 
-function createHearts() {
-  for (let i = 0; i < 20; i++) {
-    let heart = document.createElement("div");
-    heart.className = "heart";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
-    document.body.appendChild(heart);
+  const music = document.getElementById("bgMusic");
+  const noBtn = document.getElementById("noBtn");
 
-    setTimeout(() => {
-      heart.remove();
-    }, 5000);
+  window.showMessage = function() {
+    music.play();
+    alert("Сізді мерекеде күтеміз! 💐");
+    createHearts();
   }
-}
 
-// Қашатын батырма 😄
-const noBtn = document.getElementById("noBtn");
+  function createHearts() {
+    for (let i = 0; i < 20; i++) {
+      let heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+      document.body.appendChild(heart);
 
-noBtn.addEventListener("mouseover", () => {
-  const x = Math.random() * (window.innerWidth - 100);
-  const y = Math.random() * (window.innerHeight - 50);
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+  }
 
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
-});const music = document.getElementById("bgMusic");
+  noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
 
-function showMessage() {
-  music.play();
-  alert("Сізді мерекеде күтеміз! 💐");
-  createHearts();
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+  });
+
 }
