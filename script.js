@@ -1,14 +1,17 @@
 window.onload = function() {
 
   const music = document.getElementById("bgMusic");
+  const startBtn = document.getElementById("startBtn");
+  const startScreen = document.getElementById("startScreen");
   const noBtn = document.getElementById("noBtn");
 
-  window.showMessage = function() {
+  // Музыканы бастау
+  startBtn.addEventListener("click", () => {
     music.play();
-    alert("Сізді мерекеде күтеміз! 💐");
-    createHearts();
-  }
+    startScreen.style.display = "none";
+  });
 
+  // Жүректер шығару
   function createHearts() {
     for (let i = 0; i < 20; i++) {
       let heart = document.createElement("div");
@@ -23,6 +26,11 @@ window.onload = function() {
     }
   }
 
+  // Қатысамын батырмасына эффект
+  const yesBtn = document.querySelector("a button");
+  yesBtn.addEventListener("click", createHearts);
+
+  // Қашатын батырма
   noBtn.addEventListener("mouseover", () => {
     const x = Math.random() * (window.innerWidth - 100);
     const y = Math.random() * (window.innerHeight - 50);
