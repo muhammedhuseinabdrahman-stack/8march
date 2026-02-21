@@ -1,17 +1,21 @@
-window.onload = function() {
+document.addEventListener("DOMContentLoaded", function() {
 
   const music = document.getElementById("bgMusic");
   const startBtn = document.getElementById("startBtn");
   const startScreen = document.getElementById("startScreen");
   const noBtn = document.getElementById("noBtn");
+  const yesBtn = document.getElementById("yesBtn");
 
-  // Музыканы бастау
-  startBtn.addEventListener("click", () => {
-    music.play();
-    startScreen.style.display = "none";
+  // Музыка бастау
+  startBtn.addEventListener("click", function() {
+    music.play().then(() => {
+      startScreen.style.display = "none";
+    }).catch(err => {
+      console.log("Музыка қателігі:", err);
+    });
   });
 
-  // Жүректер шығару
+  // Жүрек анимация
   function createHearts() {
     for (let i = 0; i < 20; i++) {
       let heart = document.createElement("div");
@@ -26,17 +30,14 @@ window.onload = function() {
     }
   }
 
-  // Қатысамын батырмасына эффект
-  const yesBtn = document.querySelector("a button");
   yesBtn.addEventListener("click", createHearts);
 
   // Қашатын батырма
-  noBtn.addEventListener("mouseover", () => {
-    const x = Math.random() * (window.innerWidth - 100);
-    const y = Math.random() * (window.innerHeight - 50);
-
+  noBtn.addEventListener("mousemove", function() {
+    const x = Math.random() * (window.innerWidth - 120);
+    const y = Math.random() * (window.innerHeight - 60);
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
   });
 
-}
+});
